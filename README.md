@@ -1,7 +1,7 @@
 # Python i strojno učenje na resursu Supek
 
   Ispod se nalaze skripte PBS i Python u svrhu održavanja online webinara
-  'Python i strojno učenje na resursu Supek' koje se održalo 6. listopada 2023.
+  *Python i strojno učenje na resursu Supek* koje se održalo 6. listopada 2023.
 
 ## Opis
 
@@ -11,7 +11,7 @@
   procesor/čvor ili više njih.
 
   Opis:
-  1. tensorflow_singlegpu.* - TensorFlow na jednom grafičkom procesoru
-  1. tensorflow_distributed.* - TensorFlow na više grafičkih procesora i čvorova
-  1. pytorch_singlegpu.* - PyTorch na jednom grafičkom procesoru
-  1. dask_sklearn.* - Distribucija scikit-learna putem knjižnice Dask
+  1. `tensorflow_singlegpu.*` - TensorFlow na jednom grafičkom procesoru
+  1. `tensorflow_distributed.*` - TensorFlow na više grafičkih procesora i čvorova
+  1. `pytorch_singlegpu.*` - PyTorch na jednom grafičkom procesoru
+  1. `dask_sklearn.*` - Distribucija scikit-learna putem knjižnice Dask
