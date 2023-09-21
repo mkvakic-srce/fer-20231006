@@ -5,4 +5,4 @@
 
 module load scientific/tensorflow
 
-run-singlenode.sh tensorflow_singlegpu.py
+run-singlenode.sh tensorflow.py

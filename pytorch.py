@@ -13,7 +13,7 @@ def main():
     # data
     X = np.random.uniform(size=[samples, 3, 224, 224])
     y = np.random.uniform(size=[samples], low=0, high=999).astype(int)
-    X, y = torch.Tensor(X).cuda(), torch.Tensor(y).cuda()
+    X, y = torch.Tensor(X), torch.Tensor(y)
 
     dataset = torch.utils.data.TensorDataset(X, y)
     dataloader = torch.utils.data.DataLoader(dataset,
@@ -28,6 +28,8 @@ def main():
     # fit
     for epoch in range(epochs):
         for batch, (X, y) in enumerate(dataloader):
+            X = X.cuda()
+            y = y.cuda()
             optimizer.zero_grad()
             predicted = model(X)
             loss = loss_fn(predicted, y.to(torch.int64))

@@ -5,4 +5,6 @@
 
 module load scientific/pytorch
 
-run-singlegpu.sh pytorch_singlegpu.py
+cd ${PBS_O_WORKDIR:-""}
+
+run-singlegpu.sh pytorch.py
