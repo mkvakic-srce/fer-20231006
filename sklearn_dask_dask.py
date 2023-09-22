@@ -5,7 +5,7 @@ import time
 from xgboost.dask import DaskXGBClassifier
 from dask_ml.datasets import make_classification
 
-from distributed import Client
+from distributed import Client, progress, wait
 
 def main():
 
@@ -13,7 +13,7 @@ def main():
     client = Client(os.environ['SCHEDULER_ADDRESS'])
 
     # vars
-    n_samples = 10**6
+    n_samples = 10**8
     n_features = 50
     n_workers = len(client.scheduler_info()['workers'])
     chunk_length = n_samples//n_workers
@@ -23,7 +23,6 @@ def main():
                                n_features=n_features,
                                n_informative=n_features//5,
                                chunks=(chunk_length, n_features))
-    print(X.nbytes/1024**3)
 
     # fit
     estimator = DaskXGBClassifier()
