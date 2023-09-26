@@ -5,4 +5,6 @@
 
 module load scientific/tensorflow
 
-run-singlenode.sh tensorflow.py
+cd ${PBS_O_WORKDIR:-""}
+
+run-singlenode.sh tensorflow_singlegpu.py
