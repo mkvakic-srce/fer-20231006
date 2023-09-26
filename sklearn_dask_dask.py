@@ -16,13 +16,12 @@ def main():
     n_samples = 10**8
     n_features = 50
     n_workers = len(client.scheduler_info()['workers'])
-    chunk_length = n_samples//n_workers
 
     # data
     X, y = make_classification(n_samples=n_samples,
                                n_features=n_features,
                                n_informative=n_features//5,
-                               chunks=(chunk_length, n_features))
+                               chunks=(n_samples//n_workers, n_features))
 
     # fit
     estimator = DaskXGBClassifier()
