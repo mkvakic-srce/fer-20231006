@@ -1,7 +1,7 @@
 # Python i strojno učenje na resursu Supek
 
   Ispod se nalaze skripte PBS i Python u svrhu održavanja online webinara
-  *Python i strojno učenje na resursu Supek* koje se održalo 6. listopada 2023.
+  *Python i strojno učenje na resursu Supek* koje se održava 6. listopada 2023.
 
 ## Opis
 
@@ -18,3 +18,5 @@
   1. `sklearn_threads.*` - Distribucija scikit-learna putem multi-threadinga
   1. `sklearn_dask.*` - Distribucija scikit-learna putem Daska
   1. `sklearn_dask_dask.*` - Distribucija scikit-learna za big data problem
+  1. `pytorch_ray_train.*` - Distribucija PyTorcha korištenjem Ray Train
+  1. `tensorflow_ray_tune.*` - Distribucija TensorFlowa korištenjem Ray Tune
