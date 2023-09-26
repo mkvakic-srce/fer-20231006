@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #PBS -q gpu
-#PBS -l ngpus=1
+#PBS -l select=2:ngpus=1:ncpus=4
 
 module load scientific/ray
 

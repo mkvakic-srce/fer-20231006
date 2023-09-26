@@ -53,17 +53,17 @@ def main():
     dataloader = torch.utils.data.DataLoader(dataset,
                                              batch_size=batch_size)
 
-    # scaling
+    # resources
     resources = ray.cluster_resources()
     gpus = int(resources['GPU'])
     cpus = int(resources['CPU'])
     resources_per_worker = {'GPU': 1,
                             'CPU': (cpus-1)//gpus}
+
+    # trainer
     scaling_config = ScalingConfig(use_gpu=True,
                                    num_workers=gpus,
                                    resources_per_worker=resources_per_worker)
-
-    # trainer
     train_loop_config = {'lr': 1e-3,
                          'epochs': epochs,
                          'batch_size': batch_size,
