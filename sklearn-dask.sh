@@ -5,4 +5,4 @@ module load scientific/dask
 
 cd ${PBS_O_WORKDIR:-""}
 
-dask-launcher.sh sklearn_dask.py
+dask-launcher.sh sklearn-dask.py
