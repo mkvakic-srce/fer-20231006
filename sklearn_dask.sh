@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #PBS -q cpu
 #PBS -l select=2:ncpus=8
 

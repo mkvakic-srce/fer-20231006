@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #PBS -q gpu
 #PBS -l ngpus=1
 

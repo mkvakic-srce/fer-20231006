@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #PBS -q gpu
 #PBS -l select=2:ngpus=1:ncpus=4
 

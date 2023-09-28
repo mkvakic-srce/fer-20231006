@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #PBS -q cpu
 #PBS -l select=1:ncpus=16
 
