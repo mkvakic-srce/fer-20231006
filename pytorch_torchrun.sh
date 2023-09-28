@@ -5,4 +5,4 @@ module load scientific/pytorch
 
 cd ${PBS_O_WORKDIR:-""}
 
-torchrun-multinode.sh pytorch_distributed.py
+torchrun-multinode.sh pytorch_torchrun.py
