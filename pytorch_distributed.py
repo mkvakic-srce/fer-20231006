@@ -12,7 +12,7 @@ def main():
     global_rank = int(os.environ['RANK'])
 
     # samples, batch, epochs
-    samples = 5120
+    samples = 2560
     batch_size = 256
     epochs = 3
 
@@ -47,10 +47,9 @@ def main():
             loss = loss_fn(predicted, y.to(torch.int64))
             loss.backward()
             optimizer.step()
-            if global_rank == 0:
-                print('--- epoch %2i, batch %2i, loss %0.2f ---' % (epoch,
-                                                                    batch,
-                                                                    loss.item()))
+            if global_rank == 0: print('--- epoch %2i, batch %2i, loss %0.2f ---' % (epoch,
+                                                                                     batch,
+                                                                                     loss.item()))
 
 if __name__ == '__main__':
     main()

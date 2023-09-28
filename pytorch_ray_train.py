@@ -23,9 +23,6 @@ def train_loop_per_worker(train_loop_config):
     optimizer = torch.optim.SGD(model.parameters(), lr=lr)
     loss_fn = torch.nn.CrossEntropyLoss()
 
-    # dataloader
-    dataloader_prepared = ray.train.torch.prepare_data_loader(dataloader)
-
     # fit
     for epoch in range(epochs):
         for batch, (X, y) in enumerate(dataloader_prepared):
@@ -41,7 +38,7 @@ def train_loop_per_worker(train_loop_config):
 def main():
 
     # samples, batch, epochs
-    samples = 256*20
+    samples = 2560
     batch_size = 256
     epochs = 3
 
@@ -49,9 +46,11 @@ def main():
     X = np.random.uniform(size=[samples, 3, 224, 224])
     y = np.random.uniform(size=[samples], low=0, high=999).astype(int)
     X, y = torch.Tensor(X), torch.Tensor(y)
+
     dataset = torch.utils.data.TensorDataset(X, y)
     dataloader = torch.utils.data.DataLoader(dataset,
                                              batch_size=batch_size)
+    dataloader_prepared = ray.train.torch.prepare_data_loader(dataloader)
 
     # resources
     resources = ray.cluster_resources()

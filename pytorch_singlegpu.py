@@ -6,7 +6,7 @@ import torchvision
 def main():
 
     # samples, batch, epochs
-    samples = 5120
+    samples = 2560
     batch_size = 256
     epochs = 3
 

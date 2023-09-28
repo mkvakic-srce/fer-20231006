@@ -1,6 +1,5 @@
 
 import os
-import time
 
 from xgboost.dask import DaskXGBClassifier
 from dask_ml.datasets import make_classification

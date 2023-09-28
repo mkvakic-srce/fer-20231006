@@ -1,6 +1,5 @@
 
 import os
-import time
 
 from xgboost import XGBClassifier
 from sklearn.datasets import make_classification

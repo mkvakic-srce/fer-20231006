@@ -1,6 +1,5 @@
 
 import numpy as np
-import tensorrt
 import tensorflow as tf
 
 import os
@@ -10,16 +9,11 @@ import ray.tune
 from ray.tune.schedulers import AsyncHyperBandScheduler
 from ray.tune.integration.keras import TuneReportCallback
 
-def trainable_func(config, samples, batch_size, epochs):
+def trainable_func(config, data, epochs):
 
     # config
     lr = config['lr']
     momentum = config['momentum']
-
-    # data
-    X = np.random.uniform(size=[samples, 224, 224, 3])
-    y = np.random.uniform(size=[samples, 1], low=0, high=999).astype(int)
-    data = tf.data.Dataset.from_tensor_slices((X, y)).batch(batch_size)
 
     # model
     model = tf.keras.applications.ResNet50(weights=None)
@@ -32,7 +26,6 @@ def trainable_func(config, samples, batch_size, epochs):
 
     # fit
     model.fit(data,
-              batch_size = batch_size,
               epochs = epochs,
               verbose = 0,
               callbacks = [TuneReportCallback({"mean_accuracy": "accuracy"})])
@@ -40,9 +33,14 @@ def trainable_func(config, samples, batch_size, epochs):
 def main():
 
     # samples, batch, epochs
-    samples = 256*20
+    samples = 2560
     batch_size = 256
     epochs = 3
+
+    # data
+    X = np.random.uniform(size=[samples, 224, 224, 3])
+    y = np.random.uniform(size=[samples, 1], low=0, high=999).astype(int)
+    data = tf.data.Dataset.from_tensor_slices((X, y)).batch(batch_size)
 
     # resources
     resources = ray.cluster_resources()
@@ -68,8 +66,7 @@ def main():
                    "momentum": ray.tune.grid_search([0.1, 0.9])}
 
     trainable_with_parameters = ray.tune.with_parameters(trainable,
-                                                         samples=samples,
-                                                         batch_size=batch_size,
+                                                         data=data,
                                                          epochs=epochs)
 
     tuner = ray.tune.Tuner(trainable=trainable_with_parameters,
