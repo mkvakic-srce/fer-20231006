@@ -15,9 +15,9 @@ def main():
     data = tf.data.Dataset.from_tensor_slices((X, y)).batch(batch_size)
 
     # model
-    model = tf.keras.applications.ResNet50(weights=None)
     optimizer = tf.keras.optimizers.SGD()
     loss = tf.keras.losses.SparseCategoricalCrossentropy()
+    model = tf.keras.applications.ResNet50(weights=None)
     model.compile(optimizer=optimizer,
                   loss=loss)
 

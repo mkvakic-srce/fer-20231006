@@ -9,11 +9,14 @@ import ray.tune
 from ray.tune.schedulers import AsyncHyperBandScheduler
 from ray.tune.integration.keras import TuneReportCallback
 
-def trainable_func(config, data, epochs):
+def trainable_func(config, X, y, batch_size, epochs):
 
     # config
     lr = config['lr']
     momentum = config['momentum']
+
+    # data
+    data = tf.data.Dataset.from_tensor_slices((X, y)).batch(batch_size)
 
     # model
     model = tf.keras.applications.ResNet50(weights=None)
@@ -40,7 +43,6 @@ def main():
     # data
     X = np.random.uniform(size=[samples, 224, 224, 3])
     y = np.random.uniform(size=[samples, 1], low=0, high=999).astype(int)
-    data = tf.data.Dataset.from_tensor_slices((X, y)).batch(batch_size)
 
     # resources
     resources = ray.cluster_resources()
@@ -66,7 +68,9 @@ def main():
                    "momentum": ray.tune.grid_search([0.1, 0.9])}
 
     trainable_with_parameters = ray.tune.with_parameters(trainable,
-                                                         data=data,
+                                                         X=X,
+                                                         y=y,
+                                                         batch_size=batch_size,
                                                          epochs=epochs)
 
     tuner = ray.tune.Tuner(trainable=trainable_with_parameters,

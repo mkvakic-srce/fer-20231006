@@ -17,6 +17,9 @@ def train_loop_per_worker(train_loop_config):
     batch_size = train_loop_config['batch_size']
     dataloader = train_loop_config['dataloader']
 
+    # dataloader
+    dataloader_prepared = ray.train.torch.prepare_data_loader(dataloader)
+
     # model
     model = torchvision.models.resnet50()
     model = ray.train.torch.prepare_model(model)
@@ -40,7 +43,7 @@ def main():
     # samples, batch, epochs
     samples = 2560
     batch_size = 256
-    epochs = 3
+    epochs = 10
 
     # data
     X = np.random.uniform(size=[samples, 3, 224, 224])
@@ -50,7 +53,6 @@ def main():
     dataset = torch.utils.data.TensorDataset(X, y)
     dataloader = torch.utils.data.DataLoader(dataset,
                                              batch_size=batch_size)
-    dataloader_prepared = ray.train.torch.prepare_data_loader(dataloader)
 
     # resources
     resources = ray.cluster_resources()
