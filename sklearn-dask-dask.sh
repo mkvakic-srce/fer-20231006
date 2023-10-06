@@ -1,5 +1,5 @@
 #PBS -q cpu
-#PBS -l select=2:ncpus=16:mem=50GB
+#PBS -l select=2:ncpus=16:mem=100GB
 
 module load scientific/dask
 
