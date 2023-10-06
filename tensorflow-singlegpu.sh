@@ -1,4 +1,4 @@
-#PBS -q gpu
+#PBS -q gpu-radionica
 #PBS -l ngpus=1
 
 module load scientific/tensorflow
