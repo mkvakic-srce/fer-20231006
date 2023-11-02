@@ -1,7 +1,7 @@
-# Python i strojno učenje na resursu Supek
+# Aplikacije za strojno učenje na resursu Supek
 
-  Ispod se nalaze skripte PBS i Python u svrhu održavanja online webinara
-  *Python i strojno učenje na resursu Supek* koje se održava 6. listopada 2023.
+  Ispod se nalaze skripte PBS i Python u svrhu održavanja radionice
+  *Aplikacije za strojno učenje na resursu Supek*
 
 ## Opis
 
