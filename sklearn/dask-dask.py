@@ -22,7 +22,7 @@ def main():
     X, y = make_classification(n_samples=n_samples,
                                n_features=n_features,
                                n_informative=n_features//5,
-                               chunks=(n_samples//40,
+                               chunks=(n_samples//n_workers,
                                        n_features))
 
     # train, test
