@@ -22,15 +22,18 @@ def main():
     X, y = make_classification(n_samples=n_samples,
                                n_features=n_features,
                                n_informative=n_features//5,
-                               chunks=(n_samples//n_workers, n_features))
+                               chunks=(n_samples//40,
+                                       n_features))
 
     # train, test
     X_train, X_test, y_train, y_test = train_test_split(X,
                                                         y,
                                                         test_size=0.2)
 
+
     # fit
-    estimator = DaskXGBClassifier()
+    estimator = DaskXGBClassifier(n_jobs=1)
+    estimator.client = client
     estimator.fit(X_train,
                   y_train)
 

@@ -5,4 +5,4 @@ module load scientific/tensorflow
 
 cd ${PBS_O_WORKDIR:-""}
 
-run-multinode.sh tensorflow-strategy.py
+run-multinode.sh strategy.py

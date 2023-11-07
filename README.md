@@ -7,12 +7,7 @@
   verziji koja koristi samo jedan procesor/čvor ili više njih.
 
   Opis:
-  1. `tensorflow-singlegpu.*` - TensorFlow na jednom grafičkom procesoru
-  1. `tensorflow-distributed.*` - TensorFlow na više grafičkih procesora i čvorova
-  1. `pytorch-singlegpu.*` - PyTorch na jednom grafičkom procesoru
-  1. `pytorch-distributed.*` - PyTorch na jednom više grafičkih procesora i čvorova
-  1. `sklearn-threads.*` - Distribucija scikit-learna putem multi-threadinga
-  1. `sklearn-dask.*` - Distribucija scikit-learna putem Daska
-  1. `sklearn-dask_dask.*` - Distribucija scikit-learna za big data problem
-  1. `pytorch-ray-train.*` - Distribucija PyTorcha korištenjem Ray Train
-  1. `tensorflow-ray-tune.*` - Distribucija TensorFlowa korištenjem Ray Tune
+  1. `tensorflow/` - TensorFlow na jednom i više grafičkih procesora
+  1. `pytorch/`- PyTorch na jednom i više grafičkih procesora
+  1. `sklearn/` - Distribucija scikit-learna putem threadinga i Daska
+  1. `ray/` - Distribucija TensorFlowa i PyTorcha korištenjem Ray

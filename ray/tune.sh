@@ -5,4 +5,4 @@ module load scientific/ray
 
 cd ${PBS_O_WORKDIR:-""}
 
-ray-launcher.sh tensorflow-ray-tune.py
+ray-launcher.sh tune.py

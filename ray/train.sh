@@ -5,4 +5,4 @@ module load scientific/ray
 
 cd ${PBS_O_WORKDIR:-""}
 
-ray-launcher.sh pytorch-ray-train.py
+ray-launcher.sh train.py

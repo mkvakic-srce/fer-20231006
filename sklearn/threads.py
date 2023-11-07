@@ -8,7 +8,7 @@ from sklearn.model_selection import GridSearchCV
 def main():
 
     # vars
-    n_samples = 10**4
+    n_samples = 10**5
     n_features = 50
 
     # data

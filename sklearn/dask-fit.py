@@ -14,7 +14,7 @@ def main():
     client = Client(os.environ['SCHEDULER_ADDRESS'])
 
     # vars
-    n_samples = 10**4
+    n_samples = 10**5
     n_features = 50
 
     # data

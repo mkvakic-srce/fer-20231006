@@ -1,8 +1,8 @@
 #PBS -q gpu-radionica
-#PBS -l select=2:ngpus=1
+#PBS -l ngpus=1
 
 module load scientific/pytorch
 
 cd ${PBS_O_WORKDIR:-""}
 
-torchrun-multinode.sh pytorch-torchrun.py
+run-singlegpu.sh singlegpu.py
