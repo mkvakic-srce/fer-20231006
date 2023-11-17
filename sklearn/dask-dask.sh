@@ -1,5 +1,5 @@
 #PBS -q cpu-radionica
-#PBS -l select=2:ncpus=16:mem=80GB
+#PBS -l select=2:ncpus=16:mem=100GB
 
 module load scientific/dask
 
